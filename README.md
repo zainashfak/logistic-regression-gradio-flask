@@ -83,13 +83,19 @@ Run the two apps one at a time.
 
 Edit `config.py` and set the CSV path, target column, title and any ID-like columns to drop for each dataset. Both UIs build their input fields automatically from the dataset columns, so no other code needs to change.
 
+
 ## Screenshots
 
-Add your screenshots here, for example:
+### Training output
+![Training output](screenshots/train.png)
 
-- Training output (`train.py`)
-- Gradio app, Dataset 1 and Dataset 2
-- Flask app, Dataset 1 and Dataset 2
+### Gradio UI
+![Gradio - Credit Card Default](screenshots/gradio1.png)
+![Gradio - Breast Biopsy](screenshots/gradio2.png)
+
+### Flask UI
+![Flask - Credit Card Default](screenshots/flask1.png)
+![Flask - Breast Biopsy](screenshots/flask2.png)
 
 ## Tech stack
 
