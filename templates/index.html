@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Logistic Regression</title>
+<style>body{font-family:system-ui;max-width:640px;margin:40px auto;padding:0 16px}
+a.card{display:block;padding:16px;margin:12px 0;border:1px solid #ccc;border-radius:8px;text-decoration:none;color:inherit}
+a.card:hover{background:#f4f4f4}</style></head><body>
+<h1>Logistic Regression Classifiers</h1>
+{% for key, b in datasets.items() %}
+<a class="card" href="/{{ key }}"><b>{{ b.title }}</b><br>Test accuracy: {{ "%.2f"|format(b.accuracy*100) }}%</a>
+{% endfor %}</body></html>

@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><title>{{ b.title }}</title>
+<style>body{font-family:system-ui;max-width:640px;margin:40px auto;padding:0 16px}
+label{display:block;margin-top:12px;font-weight:600}
+input,select{width:100%;padding:8px;box-sizing:border-box}
+button{margin-top:20px;padding:10px 20px;font-size:16px;cursor:pointer}
+.res{margin-top:24px;padding:16px;background:#eef7ee;border-radius:8px}
+.err{margin-top:24px;padding:16px;background:#fdecea;border-radius:8px}</style></head><body>
+<a href="/">&larr; Back</a>
+<h1>{{ b.title }}</h1><p>Test accuracy: {{ "%.2f"|format(b.accuracy*100) }}%</p>
+<form method="post">
+{% for c in b.features %}
+  <label>{{ c }}</label>
+  {% if c in b.numeric %}
+    <input type="number" step="any" name="{{ c }}" required
+      value="{{ values.get(c, b.numeric[c].median) }}">
+  {% else %}
+    <select name="{{ c }}">
+    {% for o in b.categorical[c] %}
+      <option value="{{ o }}" {{ 'selected' if values.get(c) == o }}>{{ o }}</option>
+    {% endfor %}</select>
+  {% endif %}
+{% endfor %}
+<button type="submit">Predict</button>
+</form>
+{% if error %}<div class="err">{{ error }}</div>{% endif %}
+{% if result %}<div class="res"><h2>Prediction: {{ result }}</h2>
+{% for name, p in probs.items() %}<div>{{ name }}: {{ "%.1f"|format(p*100) }}%</div>{% endfor %}</div>{% endif %}
+</body></html>
